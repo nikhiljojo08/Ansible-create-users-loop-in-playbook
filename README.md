@@ -1,2 +1,3 @@
 # Ansible-create-users-loop-in-playbook
-Create multiple user accounts and home directories on multiple Linux machines using Ansible
+
+This playbook will help you to create multiple users, passwords, home directory and SSH keys at once.

@@ -1,0 +1,24 @@
+---
+- name: "Add multiple users"
+  become: "true"
+  hosts: "ansible"
+  vars_files:
+   - variables-users.yml
+  tasks:
+    - name: "Adding  users iteratively"
+      user:
+        name: "{{item.username}}"
+        uid: "{{ item.uid }}"
+        groups: "{{ item.groups }}"
+        shell: "{{item.shell}}"
+        home: "/home/{{item.username}}"	
+        password: "{{item.password}}"	
+        state: "present"
+      with_items: "{{users}}"	  
+    - name: "Placing SSH keys"    
+      authorized_key:
+        user: "{{item.username}}"
+        key: "{{ lookup('file', 'pub_keys/{{item.username}}.pub') }}"
+      with_items: "{{users}}"		
+
+	  

@@ -1,0 +1,5 @@
+---
+ users:
+   -  {username: 'jack', uid: 1500, groups: 'ec2-user', shell: '/bin/bash', password: "{{ 'jack' | password_hash('sha512', 'password') }}"}
+   -  {username: 'rose', uid: 1501, groups: 'ec2-user', shell: '/bin/bash', password: "{{ 'rose' | password_hash('sha512', 'password') }}"}
+   -  {username: 'alice', uid: 1502, groups: 'ec2-user', shell: '/bin/bash', password: "{{ 'alice' | password_hash('sha512', 'password') }}"}
